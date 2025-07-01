@@ -528,6 +528,7 @@ class ReplayBuffer:
         self.add_episode(data)
 
     def get_episode(self, idx, copy=False):
+        print('episode_ends!!!!!!!',len(self.episode_ends))
         idx = list(range(len(self.episode_ends)))[idx]
         start_idx = 0
         if idx > 0:
