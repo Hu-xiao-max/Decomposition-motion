@@ -1,4 +1,4 @@
-base_dev_dir: null
+base_dev_dir: '/home/alien/Research/'
 
 hydra:
   run:
@@ -6,7 +6,7 @@ hydra:
 
 resize_shape: [124,124]
 data_path: ${base_dev_dir}/xskill/datasets/kitchen_dataset
-exp_path: null
+exp_path: '/home/alien/Research/xskill/experiment/pretrain/2025-07-01_sim'
 ckpt: 79
 device: 'cuda:0'
 plot_top_k: null

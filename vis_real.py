@@ -1,7 +1,7 @@
 import zarr
 import plotly.graph_objects as go
 
-label_dataset_path = "/home/alien/Research/xskill/experiment/pretrain/2025-06-30_20-05-14/ckpt_19/prototype.zarr"
+label_dataset_path = "/home/alien/Research/xskill/experiment/pretrain/2025-07-06_realworld/ckpt_299/prototype.zarr"
 label_dataset = zarr.open(label_dataset_path)
 label_dataset.tree()
 
