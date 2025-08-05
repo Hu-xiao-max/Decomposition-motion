@@ -29,5 +29,10 @@ def plot_prototype(task,embodiment,eps,prototype_form="softmax_prototypes"):
     
     fig.show()
 
+# back up
 plot_prototype("draw_light_oven","human",7)
 plot_prototype("draw_light_oven","robot",7)
+# back up
+
+# plot_prototype("oven_draw_cloth","human",4)
+# plot_prototype("oven_light_cloth","robot",4)
