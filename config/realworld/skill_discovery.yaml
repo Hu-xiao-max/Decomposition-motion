@@ -6,7 +6,7 @@ hydra:
 
 
 batch_size: 20
-num_workers: 4
+num_workers: 0
 pin_memory: False
 persistent_workers: False
 drop_last: True
@@ -16,13 +16,26 @@ resize_shape: [160,120]
 robot_dataset:
   _target_: xskill.dataset.real_world_pretrain_dataset.RealWorldEpisodeTrajDataset
   _allowed_dirs: [
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/draw_cloth_light',
-    '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/draw_light_cloth',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/draw_light_oven',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/light_cloth_oven',
-    '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/light_draw_cloth',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/light_oven_draw',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/oven_light_cloth',
+    '/home/alien/Dataset/colosseum_converted_final/task_0001',
+    '/home/alien/Dataset/colosseum_converted_final/task_0002',
+    '/home/alien/Dataset/colosseum_converted_final/task_0003',
+    '/home/alien/Dataset/colosseum_converted_final/task_0004',
+    '/home/alien/Dataset/colosseum_converted_final/task_0005',
+    '/home/alien/Dataset/colosseum_converted_final/task_0006',
+    '/home/alien/Dataset/colosseum_converted_final/task_0007',
+    '/home/alien/Dataset/colosseum_converted_final/task_0008',
+    '/home/alien/Dataset/colosseum_converted_final/task_0009',
+    '/home/alien/Dataset/colosseum_converted_final/task_0010',
+    '/home/alien/Dataset/colosseum_converted_final/task_0011',
+    '/home/alien/Dataset/colosseum_converted_final/task_0012',
+    '/home/alien/Dataset/colosseum_converted_final/task_0013',
+    '/home/alien/Dataset/colosseum_converted_final/task_0014',
+    '/home/alien/Dataset/colosseum_converted_final/task_0015',
+    '/home/alien/Dataset/colosseum_converted_final/task_0016',
+    '/home/alien/Dataset/colosseum_converted_final/task_0017',
+    '/home/alien/Dataset/colosseum_converted_final/task_0018',
+    '/home/alien/Dataset/colosseum_converted_final/task_0019',
+    '/home/alien/Dataset/colosseum_converted_final/task_0020',
   ]
   frame_sampler:
     _target_: xskill.dataset.frame_samplers.ZarrFrequencyUniformSampler
@@ -30,20 +43,29 @@ robot_dataset:
     num_frames: 100
     frequency: 3
   slide: 8
-  max_get_threads: 6
+  max_get_threads: 1
   resize_shape: ${resize_shape}
 
 human_dataset:
   _target_: xskill.dataset.real_world_pretrain_dataset.RealWorldEpisodeTrajDataset
   _allowed_dirs: [
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/human_cloth_light_oven',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/human_cloth_oven_light',
-    '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/human_draw_cloth_light',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/human_draw_light_oven',
-    '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/human_draw_light_cloth',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/human_light_cloth_oven',
-    # '${base_dev_dir}/xskill/datasets/realworld_kitchen_dataset/data_v2/human_oven_draw_cloth',
-
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0001_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0003_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0004_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0005_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0006_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0007_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0008_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0009_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0010_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0012_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0013_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0014_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0015_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0016_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0017_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0018_human',
+    '${base_dev_dir}/xskill/datasets/rh20T_test/task_0020_human',
   ]
   frame_sampler:
     _target_: xskill.dataset.frame_samplers.ZarrFrequencyUniformSampler

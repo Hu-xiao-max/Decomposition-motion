@@ -121,6 +121,12 @@ def label_dataset(cfg: DictConfig):
                 images_tensor = convert_images_to_tensors(
                     images_arr, pretrain_pipeline).cuda()  #(T,c,h,w)
                 eps_len = images_tensor.shape[0]
+                
+                # 检查episode是否足够长以创建slide窗口
+                if eps_len <= model.slide:
+                    print(f"警告: Episode {i} 太短 ({eps_len} 帧) 相比slide={model.slide}，跳过此episode")
+                    continue
+                
                 im_q = torch.stack([
                     images_tensor[j:j + model.slide + 1]
                     for j in range(eps_len - model.slide)
@@ -148,6 +154,11 @@ def label_dataset(cfg: DictConfig):
             raw_rep_store = np.concatenate(raw_rep_store).astype(np.float32)
             save_key = Path(key).name
 
+            # 删除现有数据集以避免形状冲突
+            prototype_path = f'{embodiment}/{save_key}'
+            if prototype_path in prototype_zarr:
+                del prototype_zarr[prototype_path]
+            
             prototype_zarr.require_dataset(
                 f'{embodiment}/{save_key}/prototypes',
                 shape=z_store.shape,
